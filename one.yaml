@@ -11,7 +11,7 @@
         prof: minister
       ansible.builtin.debug:
         msg: "{{ Name }} and {{ prof }}"
-    - name: print from files
+    - name: print from
       vars_files:
         - var_files.yaml
       ansible.builtin.debug:
