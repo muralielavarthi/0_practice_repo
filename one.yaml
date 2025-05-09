@@ -2,11 +2,11 @@
   hosts: local
   connection: local
   vars:
-    name: murali
+    user: murali
     age: 20
   tasks:
     - name: locally
       vars:
-        name: kinod
-        anisble.builtin.debug:
-          msg: "{{ name }} and {{ age }}"
+        user: kinod
+      anisble.builtin.debug:
+        msg: "{{ user }} and {{ age }}"
