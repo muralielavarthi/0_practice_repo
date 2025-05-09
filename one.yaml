@@ -1,15 +1,11 @@
-- name: play 1
-  connection: local
+- name: variables in ansible
   hosts: local
+  vars:
+    name: murali
+    age: 20
   tasks:
-    - name: play 1 and task 1
-      ansible.builtin.debug:
-        msg: "gello"
-- name: play 2
-  connection: local
-  hosts: local
-  tasks:
-    - name: play2 and task 1
-      ansible.builtin.debug:
-        msg: "gekko"
-  
+    - name: vars locally
+      vars:
+        name: kinod
+        anisble.builtin.debug:
+          msg: "{{ name }} and {{ age }}"
