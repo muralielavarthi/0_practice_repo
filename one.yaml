@@ -6,9 +6,12 @@
     age: 20
   vars_files:
     - var_files.yaml
+  vars_prompt:
+    name: city
+    prompt: "enter city"
   tasks:
     - name: vars locally
       vars:
         user: kinod
       ansible.builtin.debug:
-        msg: "{{ user }} and {{ age }} and {{ Country }}"
+        msg: "{{ user }} and {{ age }} and {{ Country }} and {{ body }} and {{ city }}"
