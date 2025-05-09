@@ -1,6 +1,0 @@
-- name: hello to worker node
-  hosts: web
-  tasks:
-    - name: hellooo
-      ansible.builtin.debug:
-        msg: "hello worker node!"
