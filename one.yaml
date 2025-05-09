@@ -1,5 +1,4 @@
 - name: play 1
-  ansible_facts: no
   connection: local
   hosts: local
   tasks:
