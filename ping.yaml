@@ -3,4 +3,3 @@
   tasks:
     - name: pinging
       ansible.builtin.ping:
-        msg: "hekk from mastwer node"
