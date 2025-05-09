@@ -1,5 +1,6 @@
-- name: pinging the worker node
+- name: hello to worker node
   hosts: web
   tasks:
-    - name: pinging
-      ansible.builtin.ping:
+    - name: hellooo
+      ansible.builtin.debug:
+        msg: "hello worker node!"
