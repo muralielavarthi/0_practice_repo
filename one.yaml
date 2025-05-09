@@ -1,12 +1,13 @@
-- name: variables in ansible
+- name: varibale types
   hosts: local
   connection: local
   vars:
-    user: murali
-    age: 20
+    Name: Mutrali
+    prof: enginerr
   tasks:
-    - name: locally
+    - name: print locally
       vars:
-        user: kinod
+        Name: Muralie
+        prof: minister
       ansible.builtin.debug:
-        msg: "{{ user }} and {{ age }}"
+        msg: "{{ Name }} and {{ prof }}"
