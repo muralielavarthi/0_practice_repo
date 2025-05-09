@@ -1,19 +1,14 @@
-- name: variable types
+- name: variables
   hosts: local
   connection: local
   vars:
-    Name: Mutrali
-    prof: engineer
+    user: "murali"
+    age: 20
+  vars_files:
+    - var_files.yaml
   tasks:
-    - name: print locally
+    - name: vars locally
       vars:
-        Name: Muralie
-        prof: minister
+        user: kinod
       ansible.builtin.debug:
-        msg: "{{ Name }} and {{ prof }}"
-
-    - name: print from var file
-      vars_files:
-        - var_files.yaml
-      ansible.builtin.debug:
-        msg: "{{ country }}"
+        msg: "{{ user }} and {{ age }} and {{ country }}"
