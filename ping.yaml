@@ -1,0 +1,6 @@
+- name: pinging the worker node
+  hosts: 172.31.31.97
+  tasks:
+    - name: pinging
+      ansible.builtin.ping:
+        msg: "hekk from mastwer node"
