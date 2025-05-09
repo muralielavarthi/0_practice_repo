@@ -8,5 +8,5 @@
     - name: locally
       vars:
         user: kinod
-      anisble.builtin.debug:
+      ansible.builtin.debug:
         msg: "{{ user }} and {{ age }}"
