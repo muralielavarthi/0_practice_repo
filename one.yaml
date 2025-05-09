@@ -14,4 +14,4 @@
       vars:
         user: kinod
       ansible.builtin.debug:
-        msg: "{{ user }} and {{ age }} and {{ Country }} and {{ body }} and {{ city }}"
+        msg: "{{ user }} and {{ age }} and {{ Country }} and {{ body }} and {{ city }} {{ bp }}"
