@@ -1,5 +1,5 @@
 - name: pinging the worker node
-  hosts: 172.31.31.97
+  hosts: web
   tasks:
     - name: pinging
       ansible.builtin.ping:
