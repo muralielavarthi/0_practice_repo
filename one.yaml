@@ -1,5 +1,6 @@
 - name: variables in ansible
   hosts: local
+  connection: local
   vars:
     name: murali
     age: 20
