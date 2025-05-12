@@ -1,7 +1,14 @@
-- name: hello to worker node playbook
+- name: multiple plays in playbook
   hosts: local
   connection: local
-  tasks: 
-    - name: hello to worker
+  tasks:
+    - name: hello message
       ansible.builtin.debug:
-        msg: "helo world!!!"
+        msg: "helkolll"
+- name: second playbook
+  hosts: local
+  connection: local
+  tasks:
+    - name: ping the server
+      ansible.builtin.ping:
+      
