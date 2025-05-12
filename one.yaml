@@ -5,7 +5,7 @@
     name: murali
     age: 33
   vars_files:
-    - vars_files.yaml
+    - var_files.yaml
   vars_prompt:
     - name: gender
       prompt: "enter gender"
