@@ -1,14 +1,18 @@
-- name: multiple plays in playbook
+- name: variables
   hosts: local
   connection: local
-  tasks:
-    - name: hello message
+  vars:
+    name: murali
+    age: 33
+  vars_files:
+    - vars_files.yaml
+  vars_prompt:
+    - name: gender
+      prompt: "enter gender"
+  tasks: 
+    - name: task level vars
+      vars:
+        age: 20
       ansible.builtin.debug:
-        msg: "helkolll"
-- name: second playbook
-  hosts: local
-  connection: local
-  tasks:
-    - name: ping the server
-      ansible.builtin.ping:
-      
+        msg: "{{ name }} and {{ age }} and {{ country }} {{ gender }} {{ job }}"
+  
