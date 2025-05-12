@@ -14,5 +14,5 @@
       vars:
         age: 20
       ansible.builtin.debug:
-        msg: "{{ name }} and {{ age }} and {{ country }} {{ gender }} {{ job }}"
+        msg: "{{ name }} and {{ age }} and {{ country }} {{ gender }} {{ job }} and {{ city }}"
   
