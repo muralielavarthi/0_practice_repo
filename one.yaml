@@ -1,17 +1,6 @@
-- name: variables
+- name: ping the server playbook
   hosts: local
-  connection: local
-  vars:
-    user: "murali"
-    age: 20
-  vars_files:
-    - var_files.yaml
-  vars_prompt:
-    name: city
-    prompt: "enter city"
+  connections: local
   tasks:
-    - name: vars locally
-      vars:
-        user: kinod
-      ansible.builtin.debug:
-        msg: "{{ user }} and {{ age }} and {{ Country }} and {{ body }} and {{ city }} {{ bp }}"
+    - name: ping the server
+      ansible.builtin.ping:
