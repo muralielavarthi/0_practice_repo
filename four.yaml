@@ -16,5 +16,9 @@
       ansible.builtin.debug:
         msg: "{{ item.name }}"
     - name: install
+      loop:
+        - mysql-server
+        - nginx
       ansible.builtin.debug:
-        msg: "readuy"
+        name: "{{ item }}"
+        state: present
