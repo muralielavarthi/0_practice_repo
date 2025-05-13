@@ -1,18 +1,6 @@
-- name: variables
+- name: ping the server 
   hosts: local
   connection: local
-  vars:
-    name: murali
-    age: 33
-  vars_files:
-    - var_files.yaml
-  vars_prompt:
-    - name: gender
-      prompt: "enter gender"
-  tasks: 
-    - name: task level vars
-      vars:
-        age: 20
-      ansible.builtin.debug:
-        msg: "{{ name }} and {{ age }} and {{ country }} {{ gender }} {{ job }} and {{ city }}"
-  
+  tasks:
+    - name: ping the server
+      ansible.builtin.ping:
