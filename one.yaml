@@ -24,3 +24,8 @@
       loop:
         - { name: nginx, state: started }
         - { name: mysqld, state: started }
+    - name: task2
+      vars:
+        user: "mysql2132"
+      ansible.builtin.debug:
+        msg: "{{ user }}"
