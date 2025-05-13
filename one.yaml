@@ -16,7 +16,7 @@
         state: "{{ item.state }}"
       loop:
         - { name: nginx, state: present }
-        - { name: mysql, state: present }
+        - { name: mysq-sever, state: present }
     - name: advance loops2
       ansible.builtin.service:
         name: "{{ item.name }}"
