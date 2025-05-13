@@ -1,19 +1,14 @@
-- name: vars in ansi
-  hosts: local
+- name: set facts playbook
   connection: local
-  vars:
-    user: "murali"
-    age: 20
-    isMarried: yes
-  vars_files:
-    - var_files.yaml
-  vars_prompt:
-    name: "city"
-    prompt: "enter city"
-    private: false
+  hosts: local
   tasks:
-    - name: task level varibales
-      vars:
-        user: "vinod"
+    - name: task1
+      ansible.builtin.set_fact:
+        my_name: "murali 211"
+        city: "bng"
+    - name: task2
       ansible.builtin.debug:
-        msg: "{{ user }} and {{ age }} and {{ prof }} and {{ country }} and {{ city }} and  {{ gender }}"
+        msg: "{{ my_name }}"
+    - name: task3
+      ansible.builtin.debug:
+        msg: "{{ city }}"
