@@ -1,29 +1,23 @@
-- name: creating ec2 and route 53 records
-  connection: local
+- name: basics playbook - play1
   hosts: local
-  vars:
-    subnet_id: subnet-0c79c481ed81c4305
-    sg_id: sg-09002db929ad2ff12
-    ami_id: ami-09c813fb71547fc4f
-    instance_type: t3.micro
-    zone: emurali.shop
-    instances:
-      - mysql
-      - backend
-      - frontend
+  connection: local
   tasks:
-    - name: install boto3 and botocore libraries
-      loop:
-        - boto3
-        - botocore
-      ansible.builtin.pip:
-        name: "{{ item }}"
-        executable: pip3.9
-    - name: create ec2-instances
-      amazon.aws.ec2_instance:
-        name: "{{ item }}"
-        subnet_id: "{{ subnet_id }}"
-        security_group: "{{ sg_id }}"
-        image_id: "{{ ami_id }}"
-        instance_type: "{{ instance_type }}"
-      loop: "{{ instances}}"
+    - name: ping the server
+      ansible.builtin.ping:
+    - name: hello the server
+      ansible.builtin.debug:
+        msg: "hello server"
+    - name: install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+    - name: start nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+- name: play 2
+  hosts: local
+  connection: local
+  tasks:
+    - name: ping the sever again
+      ansible.builtin.ping:
