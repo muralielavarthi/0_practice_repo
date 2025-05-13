@@ -15,13 +15,3 @@
         - { name: "lueyeu", age: 2023 }
       ansible.builtin.debug:
         msg: "{{ item.name }}"
-    - name: install s/w using loops
-      loop:
-        - mysql-server
-        - nginx
-      ansible.builtin.package:
-        name: "{{ item }}"
-        state: present
-      ansible.builtin.service:
-        name: "{{ item }}"
-        state: started
