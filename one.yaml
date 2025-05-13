@@ -10,18 +10,18 @@
       tags:
         - lower
         - run
-    - name: shell module
+    - name: test module
       ansible.builtin.shell: echo "heloow orkd" >> /home/ec2-user/tmp.txt
       register: output
       ansible.builtin.debug:
         msg: "{{ output }}"
       tags:
         - run
-    - name: command module
+    - name: test2 module
       ansible.builtin.command: touch f1.txt
       tags:
         - run
-    - name: command module 2
+    - name: test3 module 2
       ansible.builtin.command: echo "heloow orkd" >> /home/ec2-user/tmp.txt
       tags:
         - run
