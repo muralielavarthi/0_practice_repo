@@ -1,6 +1,7 @@
 - name: conditions
   hosts: local
   connection: local
+  become: yes
   vars:
     node_data: "{{ ansible_facts }}"
   tasks:
