@@ -8,4 +8,3 @@
         - run
     - name: command module
       ansible.builtin.command: touch index.txt
-      tags:
