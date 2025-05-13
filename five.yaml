@@ -1,0 +1,11 @@
+- name: cond
+  hosts: local
+  connection: local
+  tasks:
+    - name: cond tasks
+      vars:
+        age: 20
+        user: "murali"
+      ansible.builtin.debug:
+        msg: "{{ user }}"
+      when: age > 18
