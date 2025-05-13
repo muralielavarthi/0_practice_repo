@@ -1,11 +1,12 @@
-- name: cond
+- name: packages
   hosts: local
   connection: local
   tasks:
-    - name: cond tasks
-      vars:
-        age: 20
-        user: "murali"
-      ansible.builtin.debug:
-        msg: "{{ user }}"
-      when: age > 50
+    - name: install and uninstall packages
+      loop:
+        - { name: git, state: present }
+        - { name: nginx, state: absent }
+        - { name: mysql-server, state: absent }
+      ansible.builtin.package:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
