@@ -4,7 +4,8 @@
   tasks:
     - name: shell module
       ansible.builtin.shell: ls -l > /home/ec2-user/tmp.txt
+      tags:
+        - run
     - name: command module
       ansible.builtin.command: touch index.txt
       tags:
-        - run
