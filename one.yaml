@@ -11,11 +11,16 @@
       ansible.builtin.debug:
         msg: "{{ age }} and murali"
       when: age>20
-    - name:
+    - name: packg
       ansible.builtin.package:
         name: zip
         state: present
       when: node_data.os_family == "RedHat"
+    - name: pakch2
+      ansible.builtin.package:
+        name: zip
+        state: present
+      when: node_data.os_family == "Ubuntu"
     # - name:
     #ansible.builtin.debug:
     #msg: "{{ node_data }}"
