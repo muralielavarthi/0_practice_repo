@@ -13,6 +13,6 @@
     vars:
       user: "kumar"
       age: 20
-    ansible.builtin.deubug:
+    ansible.builtin.debug:
       msg: "{{ user }} and {{ age }}  and {{ country }} and {{ job }} and {{ salary }}"
   
