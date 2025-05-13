@@ -11,8 +11,7 @@
         user: murali
       ansible.builtin.debug:
         msg: "{{ user | upper }}"
-      tags:
-        - lower
+
     - name: test module
       ansible.builtin.shell: echo "heloow orkd" >> /home/ec2-user/tmp.txt
       register: output
@@ -22,14 +21,9 @@
     - name: print the output
       ansible.builtin.debug:
         msg: "{{ output }} and {{ my_name | default('mur')}}"
-      tags:
-        - run
 
     - name: test2 module
       ansible.builtin.command: touch f1.txt
-      tags:
-        - run
+
     - name: test3 module 2
-      ansible.builtin.command: echo "heloow orkd" >> /home/ec2-user/tmp.txt
-      tags:
-        - run
+      ansible.builtin.command: echo "vindof" > /tmp/tmp.txt
