@@ -1,0 +1,11 @@
+- name: loops playbook
+  hosts: local
+  connection: local
+  tasks:
+    - name: basic loops
+      loop:
+        - python
+        - shell
+        - ansible
+      ansible.builtin.debug:
+        msg: "{{ item }}"
