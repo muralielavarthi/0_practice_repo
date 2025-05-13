@@ -22,4 +22,4 @@
         msg: "{{ numbers | min }} and {{ numbers | max }}"
     - name: list to map
       ansible.builtin.debug:
-        msg: "{{ stack | items2dict}}"
+        msg: "{{ stack | items2dict }}"
