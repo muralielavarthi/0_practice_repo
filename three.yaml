@@ -12,5 +12,8 @@
         tech:
           - { name: murali, city: bng }
           - { name: kindk, city: hyd }
+        tech2:
+          shell: 22.9
+          python: 22.5
       ansible.builtin.debug:
-        msg: " {{ user }} and {{ age }} and {{ techstack }} and {{ tech }}"
+        msg: " {{ user }} and {{ age }} and {{ techstack }} and {{ tech }} and {{ tech2 }}"
