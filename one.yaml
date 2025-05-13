@@ -2,11 +2,6 @@
   hosts: local
   connection: local
   tasks:
-    - name: vars
-      vars:
-        tech:
-          - shell
-          - python
     - name: basic loops
       ansible.builtin.debug:
         msg: "{{ item }}"
