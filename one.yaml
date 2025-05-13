@@ -13,9 +13,9 @@
       when: age>20
     - name:
       ansible.builtin.package:
-        name: git
+        name: gcc
         state: present
       when: node_data.os_family == "RedHat"
-    - name:
-      ansible.builtin.debug:
-        msg: "{{ node_data }}"
+    # - name:
+    #ansible.builtin.debug:
+    #msg: "{{ node_data }}"
