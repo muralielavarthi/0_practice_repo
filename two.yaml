@@ -1,0 +1,18 @@
+- name: vars playbook
+  hosts: local
+  connection: local
+  vars_files:
+    - var_files.yaml
+  vars_prompt:
+    name: city
+    prompt: "enter city"
+  vars:
+    user: "murali"
+  tasks:
+  - name: task level
+    vars:
+      user: "kumar"
+      age: 20
+    ansible.builtin.deubug:
+      msg: "{{ user }} and {{ age }}  and {{ country }} and {{ job }} and {{ salary }}"
+  
