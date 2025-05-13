@@ -16,3 +16,12 @@
       ansible.builtin.service:
         name: nginx 
         state: started
+    - name: stop service
+      ansible.builtin.service:
+        name: nginx
+        state: stopped
+    - name: uninstall nginx
+      ansible.builtin.package:
+        name: nginx
+        state: absent
+        
