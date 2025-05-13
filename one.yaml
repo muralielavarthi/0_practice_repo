@@ -2,6 +2,10 @@
   connection: local
   hosts: local
   tasks:
+    - name: set a variable
+      ansible.builtin.set_fact:
+        my_name: "murali 211"
+
     - name: lower to upper
       vars:
         user: murali
@@ -9,14 +13,18 @@
         msg: "{{ user | upper }}"
       tags:
         - lower
-        - run
     - name: test module
       ansible.builtin.shell: echo "heloow orkd" >> /home/ec2-user/tmp.txt
       register: output
-      ansible.builtin.debug:
-        msg: "{{ output }}"
       tags:
         - run
+
+    - name: print the output
+      ansible.builtin.debug:
+        msg: "{{ output }} and {{ my_name }}"
+      tags:
+        - run
+
     - name: test2 module
       ansible.builtin.command: touch f1.txt
       tags:
