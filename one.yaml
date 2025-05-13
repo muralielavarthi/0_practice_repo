@@ -26,4 +26,4 @@
       ansible.builtin.command: touch f1.txt
 
     - name: test3 module 2
-      ansible.builtin.command: echo "vindof" > /tmp/tmp.txt
+      ansible.builtin.command: ls -l > /tmp/tmp.txt
