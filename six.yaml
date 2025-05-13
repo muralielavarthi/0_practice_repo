@@ -6,7 +6,7 @@
     city: "BNG"
     numbers: [202, 30203, 20302, 03002]
     stack:
-      - { "name": "murali", "age": "200" }
+      - { "key": "murali", "value": "200" }
     desc:
       program: python
       databse: mysql
