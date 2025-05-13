@@ -1,5 +1,6 @@
 - name: loops playbook
   hosts: local
+  become: yes
   connection: local
   tasks:
     - name: basic loops
@@ -19,6 +20,6 @@
       loop:
         - mysql-server
         - nginx
-      ansible.builtin.debug:
+      ansible.builtin.package:
         name: "{{ item }}"
         state: present
