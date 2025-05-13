@@ -652,5 +652,3 @@
     "skipped": false
   }
 }
-
-ec2_info.msg.results[0].private_ip_address
