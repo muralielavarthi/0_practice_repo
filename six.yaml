@@ -3,11 +3,10 @@
   connection: local
   vars:
     user: "murali"
-    age: 20
+    city: "BNG"
+    numbers: [202, 30203, 20302, 03002]
     stack:
-      - shell
-      - python
-      - ansible
+      - { name: murali, age: 200 }
     desc:
       program: python
       databse: mysql
@@ -15,9 +14,12 @@
     - name: lower to upper
       ansible.builtin.debug:
         msg: "{{ user | upper }}"
+    - name: upper to lower
+      ansible.builtin.debug:
+        msg: "{{ city | lower }}"
+    - name: max and min
+      ansible.builtin.debug:
+        msg: "{{ numbers | min }} and {{ numbers | max }}"
     - name: list to map
       ansible.builtin.debug:
-        msg: "{{ stack | items2dict }}"
-    - name: map to list
-      ansible.builtin.debug:
-        msg: "{{ desc | dict2items }}"
+        msg: "{{ stack | items2dict}}"
