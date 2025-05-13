@@ -1,7 +1,6 @@
 - name: create 3 ec2-instances
   hosts: local
   connection: local
-  become: yes
   vars:
     subnet_id: subnet-0c79c481ed81c4305
     sg_id: sg-09002db929ad2ff12
