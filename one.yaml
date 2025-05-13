@@ -1,6 +1,8 @@
 - name: conditions
   hosts: local
   connection: local
+  vars:
+    node_data: "{{ ansible_facts }}"
   tasks:
     - name: conditions
       vars:
@@ -12,4 +14,7 @@
       ansible.builtin.package:
         name: git
         state: present
-      when: ansible.os_family == "RedHat"
+      when: node_data.os_family == "RedHat"
+    - name:
+      ansible.builtin.debug:
+        msg: "{{ node_data }}"
