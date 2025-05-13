@@ -21,7 +21,7 @@
 
     - name: print the output
       ansible.builtin.debug:
-        msg: "{{ output }} and {{ my_name }} | default('mur'))"
+        msg: "{{ output }} and {{ my_name | default('mur')}}"
       tags:
         - run
 
