@@ -1,6 +1,29 @@
-- name: tags and regst
+- name: creating ec2 and route 53 records
   connection: local
   hosts: local
+  vars:
+    subnet_id: subnet-0ea509ad4cba242d7
+    sg_id: sg-0e978039cdb6c3057
+    ami_id: mi-09c813fb71547fc4f
+    instance_type: t3.micro
+    zone: emurali.shop
+    instances:
+      - mysql
+      - backend
+      - frontend
   tasks:
-    - name: test3 module 2
-      ansible.builtin.command: echo "gwkkoe" >> /home/ec2-user/tmp.tstx
+    - name: install boto3 and botocore libraries
+      loop:
+        - boto3
+        - botocore
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        executable: pip3.9
+    - name: create ec2-instances
+      ansible.aws.ec2_instance:
+        name: "{{ item }}"
+        subnet_id: "{{ subnet_id }}"
+        security_group: "{{ sg_id }}"
+        image_id: "{{ ami_id }}"
+        instance_type: "{{ instance_type }}"
+      loop: "{{ instances}}"
