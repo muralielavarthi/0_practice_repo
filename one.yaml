@@ -13,7 +13,7 @@
       when: age>20
     - name:
       ansible.builtin.package:
-        name: gcc
+        name: zip
         state: present
       when: node_data.os_family == "RedHat"
     # - name:
