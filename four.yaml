@@ -25,7 +25,7 @@
         state: present
     - name: start the service
       loop:
-        - mysql-server
+        - mysqld
         - nginx
       ansible.builtin.service:
         name: "{{ item }}"
