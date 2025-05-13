@@ -2,18 +2,11 @@
   hosts: local
   connection: local
   tasks:
-    - name: data types
+    - name: vars
       vars:
-        user_name: "murali"
-        age: 33
-        isMarried: yes
         tech:
           - shell
-          - ansible
           - python
-        techStack:
-          city: bng
-          country: india
     - name: basic loops
       ansible.builtin.debug:
         msg: "{{ item }}"
