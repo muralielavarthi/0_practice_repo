@@ -1,26 +1,22 @@
-- name: conditions
+- name: functions
   hosts: local
   connection: local
-  become: yes
-  vars:
-    node_data: "{{ ansible_facts }}"
   tasks:
-    - name: conditions
+    - name: upper to lower
       vars:
-        age: 40
-      ansible.builtin.debug:
-        msg: "{{ age }} and murali"
-      when: age>20
-    - name: packg
-      ansible.builtin.package:
-        name: zip
-        state: present
-      when: node_data.os_family == "RedHat"
-    - name: pakch2
-      ansible.builtin.package:
-        name: zip
-        state: present
-      when: node_data.os_family == "Ubuntu"
-    # - name:
-    #ansible.builtin.debug:
-    #msg: "{{ node_data }}"
+        user: "murali"
+      ansible.buitin.debug:
+        msg: "{{ user | upper }}"
+    - name: max and min
+      vars:
+        numbers: [20, 2002, 233, 233]
+      ansible.buitin.debug:
+        msg: "{{ numbers | max }} and {{ numbers | min }}"
+    - name: defualy value
+      ansible.buitin.debug:
+        msg: "{{ city | default('bng') }}"
+    - name: string to list
+      vars:
+        s: "s,2,32"
+      ansible.buitin.debug:
+        msg: "{{ s | list }}"
