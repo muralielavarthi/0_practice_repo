@@ -8,4 +8,4 @@
         user: "murali"
       ansible.builtin.debug:
         msg: "{{ user }}"
-      when: age > 18
+      when: age > 50
