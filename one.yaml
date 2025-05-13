@@ -12,7 +12,7 @@
     prompt: "enter city"
   tasks:
     - name: task level varibales
-      var:
+      vars:
         user: "vinod"
       ansible.builtin.debug:
         msg: "{{ user }} and {{ age }} and {{ prof }} and {{ country }} and {{ city }} and  {{ gender }}"
