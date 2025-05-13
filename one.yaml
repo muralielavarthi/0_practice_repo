@@ -10,5 +10,5 @@
       when: age>20
     - name: facts
       ansible.builtin.debug:
-        msg: ansible_facts
+        msg: "{{ ansible_facts }}"
       register: ansible_facts
