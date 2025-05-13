@@ -10,6 +10,7 @@
   vars_prompt:
     name: "city"
     prompt: "enter city"
+    private: false
   tasks:
     - name: task level varibales
       vars:
