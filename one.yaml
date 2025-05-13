@@ -1,27 +1,27 @@
-- name: Playbook
-  hosts: local
+- name: tags and regst
   connection: local
-  become: yes
+  hosts: local
   tasks:
-    - name: ping the server
-      ansible.builtin.ping:
-    - name: hello the server 
+    - name: lower to upper
+      vars:
+        user: murali
       ansible.builtin.debug:
-        msg: "helo to server"
-    - name: install nginx
-      ansible.builtin.package:
-        name: nginx
-        state: present
-    - name: start nginx
-      ansible.builtin.service:
-        name: nginx 
-        state: started
-    - name: stop service
-      ansible.builtin.service:
-        name: nginx
-        state: stopped
-    - name: uninstall nginx
-      ansible.builtin.package:
-        name: nginx
-        state: absent
-        
+        msg: "{{ user | upper }}"
+      tags:
+        - lower
+        - run
+    - name: shell module
+      ansible.builtin.shell: echo "heloow orkd" >> /home/ec2-user/tmp.txt
+      register: output
+      ansible.builtin.debug:
+        msg: "{{ output }}"
+      tags:
+        - run
+    - name: command module
+      ansible.builtin.command: touch f1.txt
+      tags:
+        - run
+    - name: command module 2
+      ansible.builtin.command: echo "heloow orkd" >> /home/ec2-user/tmp.txt
+      tags:
+        - run
