@@ -8,12 +8,8 @@
       ansible.builtin.debug:
         msg: "{{ age }} and murali"
       when: age>20
-    - name: facts
-      ansible.builtin.debug:
-        msg: "{{ ansible_facts }}"
-      register: ansible_facts
     - name:
       ansible.builtin.package:
         name: git
         state: present
-      when: os_family == "RedHat"
+      when: ansible.os_family == "RedHat"
