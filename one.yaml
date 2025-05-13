@@ -2,28 +2,5 @@
   connection: local
   hosts: local
   tasks:
-    - name: set a variable
-      ansible.builtin.set_fact:
-        my_name: "murali 211"
-
-    - name: lower to upper
-      vars:
-        user: murali
-      ansible.builtin.debug:
-        msg: "{{ user | upper }}"
-
-    - name: test module
-      ansible.builtin.shell: echo "heloow orkd" >> /home/ec2-user/tmp.txt
-      register: output
-      tags:
-        - run
-
-    - name: print the output
-      ansible.builtin.debug:
-        msg: "{{ output }} and {{ my_name | default('mur')}}"
-
-    - name: test2 module
-      ansible.builtin.command: touch f1.txt
-
     - name: test3 module 2
-      ansible.builtin.command: ls -l > /tmp/tmp.txt
+      ansible.builtin.command: echo "gwkkoe" >> /home/ec2-user/tmp.tstx
