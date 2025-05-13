@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    name: "murali"
+    user: "murali"
     age: 20
     stack:
       - shell
@@ -14,4 +14,4 @@
   tasks:
     - name: lower to upper
       ansible.builtin.debug:
-        msg: "{{ name | upper }}"
+        msg: "{{ user | upper }}"
