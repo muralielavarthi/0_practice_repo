@@ -23,6 +23,10 @@
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
+    - name: start the service
+      loop:
+        - mysql-server
+        - nginx
       ansible.builtin.service:
         name: "{{ item }}"
         state: started
