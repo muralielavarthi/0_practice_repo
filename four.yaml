@@ -15,3 +15,6 @@
         - { name: "lueyeu", age: 2023 }
       ansible.builtin.debug:
         msg: "{{ item.name }}"
+    - name: install
+      ansible.builtin.debug:
+        msg: "readuy"
