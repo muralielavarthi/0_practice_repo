@@ -5,18 +5,18 @@
     - name: upper to lower
       vars:
         user: "murali"
-      ansible.buitin.debug:
+      ansible.builtin.debug:
         msg: "{{ user | upper }}"
     - name: max and min
       vars:
         numbers: [20, 2002, 233, 233]
-      ansible.buitin.debug:
+      ansible.builtin.debug:
         msg: "{{ numbers | max }} and {{ numbers | min }}"
     - name: defualy value
-      ansible.buitin.debug:
+      ansible.builtin.debug:
         msg: "{{ city | default('bng') }}"
     - name: string to list
       vars:
         s: "s,2,32"
-      ansible.buitin.debug:
+      ansible.builtin.debug:
         msg: "{{ s | list }}"
