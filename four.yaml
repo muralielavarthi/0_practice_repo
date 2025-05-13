@@ -30,3 +30,6 @@
       ansible.builtin.service:
         name: "{{ item }}"
         state: started
+    - name: facts
+      ansible.builtin.debug:
+        msg: " {{ ansible_facts }}"
