@@ -1,0 +1,17 @@
+- name: functions
+  hosts: local
+  connection: local
+  vars:
+    name: "murali"
+    age: 20
+    stack:
+      - shell
+      - python
+      - ansible
+    desc:
+      program: python
+      databse: mysql
+  tasks:
+    - name: lower to upper
+      ansible.builtin.debug:
+        msg: "{{ name | upper }}"
