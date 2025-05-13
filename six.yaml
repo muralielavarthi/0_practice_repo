@@ -15,3 +15,9 @@
     - name: lower to upper
       ansible.builtin.debug:
         msg: "{{ user | upper }}"
+    - name: list to map
+      ansible.builtin.debug:
+        msg: "{{ stack | items2dict }}"
+    - name: map to list
+      ansible.builtin.debug:
+        msg: "{{ desc | dict2items }}"
