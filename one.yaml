@@ -1,6 +1,7 @@
 - name: basics playbook - play1
   hosts: local
   connection: local
+  become: yes
   tasks:
     - name: ping the server
       ansible.builtin.ping:
