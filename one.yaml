@@ -1,4 +1,4 @@
-- name: ping the server 
+- name: Playbook
   hosts: local
   connection: local
   tasks:
@@ -7,3 +7,11 @@
     - name: hello the server 
       ansible.builtin.debug:
         msg: "helo to server"
+    - name: install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+    - name: start nginx
+      ansible.builtin.service:
+        name: nginx 
+        state: started
