@@ -1,6 +1,7 @@
 - name: data types
   hosts: local
   connection: local
+  become: yes
   tasks:
     - name: basic loops
       ansible.builtin.debug:
