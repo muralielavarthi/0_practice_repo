@@ -1,14 +1,37 @@
-- name: set facts playbook
-  connection: local
+- name: data types
   hosts: local
+  connections: local
   tasks:
-    - name: task1
-      ansible.builtin.set_fact:
-        my_name: "murali 211"
-        city: "bng"
-    - name: task2
+    - name: data types
+      vars:
+        user_name: "murali"
+        age: 33
+        isMarried: yes
+        tech:
+          - shell
+          - ansible
+          - python
+        techStack:
+          city: bng
+          country: india
+    - name: basic loops
       ansible.builtin.debug:
-        msg: "{{ my_name }}"
-    - name: task3
-      ansible.builtin.debug:
-        msg: "{{ city }}"
+        msg: "{{ item }}"
+      loop:
+        - git
+        - nginx
+        - mysql
+    - name: advance loops
+      ansible.builtin.package:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      loop:
+        - { name: nginx, state: present }
+        - { name: mysql, state: present }
+    - name: advance loops
+      ansible.builtin.service:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      loop:
+        - { name: nginx, state: started }
+        - { name: mysqld, state: started }
