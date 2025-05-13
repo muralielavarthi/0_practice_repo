@@ -14,4 +14,4 @@
         user: "kumar"
         age: 20
       ansible.builtin.debug:
-        msg: "{{ user }} and {{ age }}  and {{ country }} and {{ job }} and {{ salary }}"
+        msg: "{{ city }} and {{ user }} and {{ age }}  and {{ country }} and {{ job }} and {{ salary }}"
