@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars: # play level vars
-    user-name: "murali"
+    user_name: "murali"
     age: 22
     isMarred: yes
     skills:
