@@ -24,7 +24,7 @@
       vars:
         user_name: "vindo2"
       ansible.builtin.debug:
-        msg: "{{ age }} and {{ user-name }} and {{ country }} and {{ city2 }} and {{ work }} and {{ gender }}"
+        msg: "{{ age }} and {{ user_name }} and {{ country }} and {{ city2 }} and {{ work }} and {{ gender }}"
     - name: set_fact
       ansible.builtin.set_fact:
         my_msg1: "gekkow"
