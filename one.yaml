@@ -5,7 +5,7 @@
     - name: install boto3 and botocore python libraries
       ansible.builtin.pip:
         name: "{{ item }}"
-        executable: pip3.9
+        state: present
       loop:
         - boto3
         - botocore
@@ -25,5 +25,4 @@
         security_group: "{{ security_group }}"
         image_id: "{{ image_id }}"
         instance_type: "{{ instance_type }}"
-        region: us-east-1
       loop: "{{ instances_names }}"
