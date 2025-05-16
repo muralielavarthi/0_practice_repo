@@ -1,16 +1,14 @@
-- name: shell module and command module
-  hosts: local
+- name: ansible tags
   connection: local
+  hosts: local
   tasks:
-    - name: shell module
-      ansible.builtin.shell: touch f1.tx
-      register: command_output
-    - name: print the complete output
+    - name: msg the server
       ansible.builtin.debug:
-        msg: "{{ command_output }}"
-    - name: print stdout
-      ansible.builtin.debug:
-        msg: "{{ command_output.stdout }}"
-    - name: print command exit status - success or failure
-      ansible.builtin.debug:
-        msg: "{{ command_output.rc }}"
+        msg: "hello to server"
+      tags:
+        - run
+        - run_now
+    - name: ping the server
+      ansible.builtin.ping:
+      tags:
+        - run
