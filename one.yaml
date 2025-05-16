@@ -10,3 +10,10 @@
       ansible.builtin.debug:
         msg: "{{ note }}"
       when: age == 2020
+    - name: basic loops
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop:
+        - git
+        - nginx
+        - mysql-server
