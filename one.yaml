@@ -3,7 +3,7 @@
   connection: local
   tasks:
     - name: shell module
-      ansible.builtin.shell: ls -l
+      ansible.builtin.shell: touch f1.tx
       register: command_output
     - name: print the complete output
       ansible.builtin.debug:
