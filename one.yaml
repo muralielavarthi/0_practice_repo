@@ -1,14 +1,20 @@
-- name: ansible tags
+- name: create aws instances
   connection: local
   hosts: local
+  become: yes
   tasks:
-    - name: msg the server
-      ansible.builtin.debug:
-        msg: "hello to server"
-      tags:
-        - run
-        - run_now
-    - name: ping the server
-      ansible.builtin.ping:
-      tags:
-        - run
+    - name: create ec2-instaces
+      vars:
+        instances_names:
+          - mysql
+          - backend
+          - frontend
+        subnet_id: subnet-0f4dd395530fb0d4d
+        image_id: ami-09c813fb71547fc4f
+        security_group: sg-09002db929ad2ff12
+      aws.amazon.ec2_instance:
+        name: " {{ item }}"
+        subnet_id: "{{ subnet_id }}"
+        security_group: "{{ security_group }}"
+        image_id: "{{ image_id }}"
+      loop: "{{ instances_names }}"
