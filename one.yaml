@@ -5,3 +5,7 @@
     - name: print ansible facts
       ansible.builtin.debug:
         msg: "This will pull node data: {{ ansible_facts }}"
+      register: "{{ ansible_facts }}"
+    - name: print node variable
+      ansible.builtin.debug:
+        msg: " {{ system_capabilities_enforced }}"
