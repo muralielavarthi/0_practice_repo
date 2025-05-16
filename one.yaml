@@ -3,4 +3,4 @@
   connection: local
   tasks:
     - name: ping the control node
-      ansible.builti.ping:
+      ansible.builtin.ping:
