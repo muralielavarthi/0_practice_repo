@@ -6,7 +6,7 @@
       vars:
         user: "murali"
       ansible.builtin.debug:
-        msg: "{{ murali | upper }}"
+        msg: "{{ user | upper }}"
     - name: find min and max
       vars:
         numbers: [2, 230, 340, 10]
