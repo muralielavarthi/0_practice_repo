@@ -1,8 +1,12 @@
-- name: vars in ansible
+- name: conditions in ansi
   hosts: local
   connection: local
-  gather_facts: no
+  vars:
+    age: 2020
+    user_id: 21
+    note: "hgwooo world@@"
   tasks:
-    - name: facts data
+    - name: cond in ansi
       ansible.builtin.debug:
-        msg: "{{ ansible_facts }}"
+        msg: "{{ note }}"
+      when: age >= 20
