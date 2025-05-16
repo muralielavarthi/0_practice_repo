@@ -1,22 +1,13 @@
-- name: ping the server playbook
+- name: play one
   hosts: local
-  become: yes
   connection: local
   tasks:
-    - name: ping the control node
+    - name: ping the server
       ansible.builtin.ping:
-    - name: msg the control node
+- name: play two
+  hosts: local
+  connection: local
+  tasks:
+    - name: msg the node
       ansible.builtin.debug:
-        msg: "hello server"
-    - name: install nginx
-      ansible.builtin.package:
-        name: nginx
-        state: present
-    - name: enable nginx
-      ansible.builtin.service:
-        name: nginx
-        enabled: yes
-    - name: start nginx
-      ansible.builtin.service:
-        name: nginx
-        state: started
+        msg: "hello the server "
