@@ -29,7 +29,7 @@
         image_id: "{{ image_id }}"
         instance_type: "{{ instance_type }}"
       loop: "{{ instances_names }}"
-      register: ec2_info.results
+      register: ec2_info
     - name: create private ip r53 records
       amazon.aws.route53:
         state: present
