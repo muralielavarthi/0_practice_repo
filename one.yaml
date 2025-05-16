@@ -1,22 +1,7 @@
-- name: data transformation filters
+- name: ansible facts
   hosts: local
   connection: local
   tasks:
-    - name: filters in ansi
-      vars:
-        user: "murali"
+    - name: print ansible facts
       ansible.builtin.debug:
-        msg: "{{ user | upper }}"
-    - name: find min and max
-      vars:
-        numbers: [2, 230, 340, 10]
-      ansible.builtin.debug:
-        msg: "{{ numbers | min }} and {{ numbers | max }}"
-    - name: string to list
-      vars:
-        str: "murali,vinod,kumar"
-      ansible.builtin.debug:
-        msg: "{{ str | list }}"
-    - name: default value
-      ansible.builtin.debug:
-        msg: "{{ user_name | default('murali') }}"
+        msg: "This will pull node data: {{ ansible_facts }}"
