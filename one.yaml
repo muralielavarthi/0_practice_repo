@@ -1,10 +1,10 @@
-- name: ansible facts
+- name: shell module and command module
   hosts: local
   connection: local
   tasks:
-    - name: print ansible facts
+    - name: shell module
+      ansible.builtin.shell: ls -l
+      register: output
+    - name: print the output
       ansible.builtin.debug:
-        msg: "This will pull node data: {{ ansible_facts }}"
-    - name: print node variable
-      ansible.builtin.debug:
-        msg: " {{ ansible_facts.os_family }} and {{ ansible_facts.architecture }}"
+        msg: "{{ output }}"
