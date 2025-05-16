@@ -1,33 +1,8 @@
 - name: vars in ansible
   hosts: local
   connection: local
-  vars: # play level vars
-    user_name: "murali"
-    age: 22
-    isMarred: yes
-    skills:
-      - c
-      - c++
-      - java
-    techver:
-      ansi: "latest"
-      java: "latest"
-  vars_files:
-    - vars_files.yaml
-  vars_prompt:
-    - name: "city"
-      prompt: "enter city"
-    - name: "city2"
-      prompt: "enter city2"
+  #gather_facts: no
   tasks:
-    - name: vars task
-      vars:
-        user_name: "vindo2"
+    - name: facts data
       ansible.builtin.debug:
-        msg: "{{ age }} and {{ user_name }} and {{ country }} and {{ city2 }} and {{ work }} and {{ gender }}"
-    - name: set_fact
-      ansible.builtin.set_fact:
-        my_msg1: "gekkow"
-    - name: pull the value
-      ansible.builtin.debug:
-        msg: "{{ my_msg1 }}"
+        msg: "{{ ansible_facts }}"
