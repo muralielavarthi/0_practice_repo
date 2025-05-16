@@ -1,13 +1,33 @@
-- name: play one
+- name: vars in ansible
   hosts: local
   connection: local
+  vars: # play level vars
+    user-name: "murali"
+    age: 22
+    isMarred: yes
+    skills:
+      - c
+      - c++
+      - java
+    techver:
+      ansi: "latest"
+      java: "latest"
+  vars_files:
+    - vars_files.yaml
+  vars_prompt:
+    - name: "city"
+      prompt: "enter city"
+    - name: "city2"
+      prompt: "enter city2"
   tasks:
-    - name: ping the server
-      ansible.builtin.ping:
-- name: play two
-  hosts: local
-  connection: local
-  tasks:
-    - name: msg the node
+    - name: vars task
+      vars:
+        user-name: "vindo2"
       ansible.builtin.debug:
-        msg: "hello the server "
+        msg: "{{ age }} and {{ user-name }} and {{ country }} and {{ city2 }} and {{ work }} and {{ gender }}"
+    - name: set_fact
+      ansible.builtin.set_fact:
+        my_msg1: "gekkow"
+    - name: pull the value
+      ansible.builtin.debug:
+        msg: "{{ my_msg1 }}"
