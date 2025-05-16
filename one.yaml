@@ -9,4 +9,4 @@
     - name: cond in ansi
       ansible.builtin.debug:
         msg: "{{ note }}"
-      when: age >= 20
+      when: age == 2020
