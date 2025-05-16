@@ -1,6 +1,7 @@
 - name: conditions in ansi
   hosts: local
   connection: local
+  become: yes
   vars:
     age: 2020
     user_id: 21
