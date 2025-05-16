@@ -4,3 +4,18 @@
   tasks:
     - name: ping the control node
       ansible.builtin.ping:
+    - name: msg the control node
+      ansible.builtin.debug:
+        msg: "hello server"
+    - name: install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+    - name: enable nginx
+      ansible.builtin.service:
+        name: nginx
+        enabled: yes
+    - name: start nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
