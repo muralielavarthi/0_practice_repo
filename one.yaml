@@ -30,3 +30,6 @@
     - name: print ec2_info
       ansible.builtin.debug:
         msg: "{{ ec2_info }}"
+    - name: print the value
+      ansible.builtin.debug:
+        msg: "{{ ec2_info.changed }}"
