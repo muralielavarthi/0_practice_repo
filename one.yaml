@@ -1,27 +1,22 @@
-- name: conditions in ansi
+- name: data transformation filters
   hosts: local
   connection: local
-  become: yes
-  vars:
-    age: 2020
-    user_id: 21
-    note: "hgwooo world@@"
   tasks:
-    - name: cond in ansi
+    - name: filters in ansi
+      vars:
+        user: "murali"
       ansible.builtin.debug:
-        msg: "{{ note }}"
-      when: age == 2020
-    - name: basic loops
+        msg: "{{ murali | upper }}"
+    - name: find min and max
+      vars:
+        numbers: [2, 230, 340, 10]
       ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop:
-        - git
-        - nginx
-        - mysql-server
-    - name: advance loops
-      ansible.builtin.package:
-        name: "{{ item.name }}"
-        state: "{{ item.state }}"
-      loop:
-        - { name: nginx, state: absent }
-        - { name: gcc, state: present }
+        msg: "{{ numbers | min }} and {{ numbers | max }}"
+    - name: string to list
+      vars:
+        str: "murali,vinod,kumar"
+      ansible.builtin.debug:
+        msg: "{{ str | list }}"
+    - name: default value
+      ansible.builtin.debug:
+        msg: "{{ user_name | default('murali') }}"
