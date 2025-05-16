@@ -30,24 +30,27 @@
         instance_type: "{{ instance_type }}"
       loop: "{{ instances_names }}"
       register: ec2_info.results
-    - name: update route53 record for backend and database
+    - name: create private ip r53 records
       amazon.aws.route53:
         state: present
-        zone: " {{ zone }}"
-        type: " {{ type }}"
-        ttl: "{{ ttl }}"
-        record: "{{ item.item }}.{{ zone }}"
+        zone: "{{ zone }}"
+        record: "{{ item.item}}.{{ zone }}"
+        type: A
+        ttl: 1
         value: "{{ item.instances[0].private_ip_address }}"
-      overwrite: true
+        wait: true
+        overwrite: true
       loop: "{{ ec2_info.results }}"
-    - name: update route53 record for frontend
+
+    - name: create public ip for frontend
       amazon.aws.route53:
         state: present
-        zone: " {{ zone }}"
-        type: " {{ type }}"
-        ttl: "{{ ttl }}"
+        zone: "{{ zone }}"
         record: "{{ zone }}"
+        type: A
+        ttl: 1
         value: "{{ item.instances[0].public_ip_address }}"
+        wait: true
         overwrite: true
-      when: item.item == "frontend"
       loop: "{{ ec2_info.results }}"
+      when: item.item == "frontend"
