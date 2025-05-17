@@ -1,17 +1,25 @@
-- name: vars in ansi
-  connection: local
+- name: playbook1
   hosts: local
-  vars:
-    user: "murali21"
-  vars_files:
-    - vars_file.yaml
-    - vars_file2.yaml
-  vars_prompt:
-    - name: city
-      prompt: "enter city:"
+  connection: local
+  become: yes
   tasks:
-    - name: vars task level
-      vars:
-        user: murali2000"
+    - name: set the facts var
+      ansible.builtin.set_fact:
+        user: "ec2-user"
+    - name: accessing set_fact var
       ansible.builtin.debug:
-        msg: "{{ user }} and {{ city }} and {{ country }} and {{ job }} and {{ gender }} and {{ new_file }}"
+        msg: "{{ user }}"
+    - name: basic loops
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop:
+        - gcc
+        - c
+        - c++
+    - name: advance loops
+      ansible.builtin.package:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      loop:
+        - { name: ngix, state: absent }
+        - { name: zip, state: present }
