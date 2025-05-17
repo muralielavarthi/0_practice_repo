@@ -10,6 +10,8 @@
         msg: "{{ user }}"
       when: id >= 200
     - name: register ansible_facts
+      ansible.builtin.debug:
+        msg: "no action task"
       register: ansible_facts
     - name: doing Os specific
       ansible.builtin.debug:
