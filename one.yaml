@@ -7,3 +7,8 @@
     - name: hello the server
       ansible.builtin.debug:
         msg: "hello server"
+    - name: create a dir
+      ansible.builtin.file:
+        path: "/home/ec2-user/dir"
+        state: directory
+        mode: 666
