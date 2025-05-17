@@ -1,33 +1,21 @@
-- name: playbook1
+- name: playb1
   hosts: local
   connection: local
-  become: yes
   tasks:
-    - name: set the facts var
-      ansible.builtin.set_fact:
-        user: "ec2-user"
-    - name: accessing set_fact var
+    - name: condi in ansi
+      vars:
+        user: "kumar222"
+        id: 220
       ansible.builtin.debug:
         msg: "{{ user }}"
-    - name: basic loops
+      when: id >= 200
+    - name: register ansible_facts
+      register: ansible_facts
+    - name: doing Os specific
       ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop:
-        - gcc
-        - c
-        - c++
-    - name: advance loops
-      ansible.builtin.package:
-        name: "{{ item.name }}"
-        state: "{{ item.state }}"
-      loop:
-        - { name: ngix, state: absent }
-        - { name: zip, state: present }
-    - name: shell module
-      ansible.builtin.shell: ls -l
-      register: command_output
-    - name: access shell command output
+        msg: "hello Redhat"
+      when: ansible_facts.os_family == "RedHat"
+    - name: doing Os specific2
       ansible.builtin.debug:
-        msg: "{{ command_output }}"
-    - name: command module
-      ansible.builtin.command: echo "hello world"
+        msg: "debian"
+      when: ansible_facts.os_family == "debian"
