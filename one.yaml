@@ -15,5 +15,6 @@
     - name: create a file
       ansible.builtin.file:
         path: "/home/ec2-user/f1"
-        state: file
+        state: touch
+        owner: ec2-user
         mode: 421
