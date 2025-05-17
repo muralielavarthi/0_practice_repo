@@ -23,3 +23,11 @@
       loop:
         - { name: ngix, state: absent }
         - { name: zip, state: present }
+    - name: shell module
+      ansible.builtin.shell: ls -l
+      register: command_output
+    - name: access shell command output
+      ansible.builtin.debug:
+        msg: "{{ command_output }}"
+    - name: command module
+      ansible.builtin.command: echo "hello world"
