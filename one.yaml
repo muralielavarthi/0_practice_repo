@@ -12,3 +12,7 @@
         path: "/home/ec2-user/dir"
         state: directory
         mode: 666
+    - name: create a file
+      ansible.builtin.file:
+        path: "/home/ec2-user/f1"
+        mode: 421
