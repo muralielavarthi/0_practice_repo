@@ -1,23 +1,17 @@
-- name: playbook 1
-  hosts: local
-  become: yes
+- name: vars in ansi
   connection: local
-  tasks:
-    - name: install nginx
-      ansible.builtin.package:
-        name: nginx
-        state: present
-    - name: start nginx
-      ansible.builtin.service:
-        name: nginx
-        state: started
-    - name: enable nginx
-      ansible.builtin.service:
-        name: nginx
-        enabled: yes
-- name: playbook 2
   hosts: local
-  connection: local
+  vars:
+    user: "murali21"
+  vars_file:
+    - vars_file.yaml
+    - vars_file2.yaml
+  vars_prompt:
+    - name: city
+      prompt: "enter city:"
   tasks:
-    - name: ping
-      ansible.builtin.ping:
+    - name: vars task level
+      vars:
+        user: murali2000"
+      ansible.builtin.debug:
+        msg: "{{ user }} and {{ city }} and {{ country }} and {{ job }} and {{ gender }} and {{ new_file }}"
