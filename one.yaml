@@ -9,13 +9,11 @@
       ansible.builtin.debug:
         msg: "{{ user }}"
       when: id >= 200
-
-    - name: doing OS specific (RedHat)
+    - name: doing Os specific
       ansible.builtin.debug:
         msg: "hello Redhat"
       when: ansible_os_family == "RedHat"
-
-    - name: doing OS specific (Debian)
+    - name: doing Os specific2
       ansible.builtin.debug:
         msg: "debian"
-      when: ansible_os_family == "Debian"
+      when: ansible_os_family == "debian"
