@@ -3,7 +3,7 @@
   hosts: local
   vars:
     user: "murali21"
-  vars_file:
+  vars_files:
     - vars_file.yaml
     - vars_file2.yaml
   vars_prompt:
