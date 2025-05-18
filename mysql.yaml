@@ -33,7 +33,7 @@
       ignore_errors: true
     - name: print the mysql_info
       ansible.builtin.debug:
-        msg: "{{ mysql_info }}"
+        msg: "{{ mysql_info.failed }}"
     - name: setup root password
       ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
       when: mysql_info.failed is true
