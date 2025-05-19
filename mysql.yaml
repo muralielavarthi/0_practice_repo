@@ -1,9 +1,15 @@
 - name: playbook
   hosts: mysql
   become: yes
+  gather_facts: no
   vars:
     mysql_root_password: ExpenseApp@1
   tasks:
+    - name: install dependency packages
+      ansible.builtin.pip:
+        name: "{{ item }}"
+      loop:
+        - PyMySQL
     - name: install mysql-server
       ansible.builtin.package:
         name: mysql-server
