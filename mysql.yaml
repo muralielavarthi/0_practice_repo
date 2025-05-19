@@ -1,6 +1,5 @@
 - name: mysql playbook
   hosts: mysql
-  connection: local
   become: yes
   vars:
     mysql_root_password: ExpenseApp@1
