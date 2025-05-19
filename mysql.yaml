@@ -27,7 +27,7 @@
       community.mysql.mysql_info:
         login_user: root
         login_password: "{{ mysql_root_password }}"
-        login_host: 172.31.91.66
+        login_host: 35.174.138.64
       register: mysql_info # to store the output of the task
       ignore_errors: true # error handling
       #  we set ignore errrors as true, so it will not exit if there is an error(root password not set), it will continue to next task
