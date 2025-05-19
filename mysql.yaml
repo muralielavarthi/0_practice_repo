@@ -1,5 +1,5 @@
 - name: mysql playbook
-  hosts: local
+  hosts: mysql
   connection: local
   become: yes
   vars:
@@ -24,7 +24,7 @@
       community.mysql.mysql_info:
         login_user: root
         login_password: "{{ mysql_root_password }}"
-        login_host: 3.92.45.10
+        login_host: 34.227.159.128
       register: mysql_info
       ignore_errors: true
     - name: set root password
