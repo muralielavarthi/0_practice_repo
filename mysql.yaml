@@ -22,7 +22,7 @@
         state: started
         enabled: yes
     - name: check root passowrd set
-      community.mysql_mysql_info:
+      community.mysql.mysql_info:
         login_user: root
         login_password: "{{ mysql_root_password }}"
         login_host: localhost
