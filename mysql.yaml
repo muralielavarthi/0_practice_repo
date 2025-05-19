@@ -5,11 +5,12 @@
   vars:
     mysql_root_password: ExpenseApp@1
   tasks:
-    - name: install dependency packages
+    - name: installing dependency packages
       ansible.builtin.pip:
         name: "{{ item }}"
       loop:
         - PyMySQL
+        - cryptography
     - name: install mysql-server
       ansible.builtin.package:
         name: mysql-server
