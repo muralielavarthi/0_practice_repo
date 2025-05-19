@@ -7,7 +7,7 @@
   tasks:
     - name: install required packages
       ansible.builtin.pip:
-        - PyMySQL
+        name: PyMySQL
     - name: install mysql-server
       ansible.builtin.package:
         name: mysql-server
