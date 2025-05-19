@@ -1,5 +1,5 @@
 - name: mysql server setup
-  hosts: local
+  hosts: mysql
   connection: local
   become: yes
   vars:
