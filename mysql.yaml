@@ -1,6 +1,5 @@
-- name: mysql server setup
+- name: configure mysql server
   hosts: mysql
-  connection: local
   become: yes
   vars:
     mysql_root_password: ExpenseApp@1
@@ -8,32 +7,38 @@
     - name: Install MySQL libraries
       ansible.builtin.pip:
         name: "{{ item }}"
-        executable: pip3.9
-      loop:
-        - cryptography
+        executable: pip3.9 #python3.9 is installed, so need we need to mention pip3.9 as executable
+      loop: # these are python libraries, required to connect to mysql server, we will see an error without these while running the playbook
+        - cryptography # this package is required for error handling to work fine.
         - PyMySQL
-    - name: install mysql-server
+
+    - name: Install MySQL server
       ansible.builtin.package:
         name: mysql-server
-        state: present
-    - name: start mysql-server
+        state: installed
+
+    - name: start and enable mysql server
       ansible.builtin.service:
         name: mysqld
         state: started
-    - name: enable mysql-server
-      ansible.builtin.service:
-        name: mysqld
         enabled: yes
-    - name: root password setup check
+
+    - name: connect to mysql server
       community.mysql.mysql_info:
         login_user: root
         login_password: "{{ mysql_root_password }}"
-        login_host: 172.31.91.66
-      register: mysql_info
-      ignore_errors: true
-    - name: roots password set
-      ansible.builtin.command: mysql_secure_installation --set-root-pass {{ mysql_root_password }}
-      when: mysql_info.failed is true
-    - name: print mysql_info
+        login_host: mysql.daws82s.online
+      register: mysql_info # to store the output of the task
+      ignore_errors: true # error handling
+      #  we set ignore errrors as true, so it will not exit if there is an error(root password not set), it will continue to next task
+
+    - name: print the output
       ansible.builtin.debug:
-        msg: "{{ mysql_info }}"
+        msg: "MySQL info: {{ mysql_info }}"
+
+    - name: setup root password # this task will skip when root password is already set.
+      ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_root_password }} "
+      when: mysql_info.failed is true #run when password is not set - true "t" is lowercase
+      # using output of previous task as an input to this task, to check whether root password is set are not
+      # this is not idempotent since it command module, we have to control it using when condition.
+      # Checking exist status here similar to shell scripting.
