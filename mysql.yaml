@@ -1,4 +1,4 @@
-- name: playbook
+- name: mysql playbook
   hosts: local
   connection: local
   become: yes
@@ -8,7 +8,6 @@
     - name: install dependencies
       ansible.builtin.pip:
         name: "{{ item }}"
-        executable: pip3.9
       loop:
         - cryptography
         - PyMySQL
@@ -21,13 +20,13 @@
         name: mysqld
         state: started
         enabled: yes
-    - name: check root passowrd set
+    - name: check root password
       community.mysql.mysql_info:
         login_user: root
         login_password: "{{ mysql_root_password }}"
-        login_host: 172.31.82.115
+        login_host: 3.92.45.10
       register: mysql_info
       ignore_errors: true
-    - name: set root passowrd
+    - name: set root password
       ansible.builtin.command: mysql_secure_installation --set-root-pass {{ mysql_root_password }}
       when: mysql_info.failed is true
