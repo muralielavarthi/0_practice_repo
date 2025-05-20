@@ -1,31 +1,5 @@
 - name: mysql playbook
   hosts: mysql
   become: yes
-  vars:
-    mysql_root_password: ExpenseApp@1
-  tasks:
-    - name: install python packages
-      ansible.builtin.pip:
-        name: "{{ item }}"
-      loop:
-        - cryptography
-        - PyMySQL
-    - name: install mysql-server
-      ansible.builtin.package:
-        name: mysql-server
-        state: present
-    - name: start and enable mysql-server
-      ansible.builtin.service:
-        name: mysqld
-        state: started
-        enabled: yes
-    - name: check is root password set
-      community.mysql.mysql_info:
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-        login_host: mysql.emurali.shop
-      register: mysql_info
-      ignore_errors: true
-    - name: set root password
-      ansible.builtin.command: mysql_secure_installation --set-root-pass {{ mysql_root_password }}
-      when: mysql_info.failed is true
+  roles:
+    - mysql
