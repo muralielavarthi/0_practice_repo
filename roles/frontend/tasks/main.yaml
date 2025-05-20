@@ -10,3 +10,8 @@
 - name: include common roles
   include_role:
     name: common
+- name: copy expense conf file
+  ansible.builtin.tempalte:
+    src: expense.conf
+    dest: /etc/nginx/default.d/expense.conf
+  notify: restart nginx
