@@ -1,0 +1,55 @@
+- name: backend playbook
+  hosts: backend
+  become: yes
+  vars:
+    mysql_root_password: ExpenseApp@1
+  tasks:
+    - name: install python packages
+      ansible.builtin.pip:
+        name: "{{ item }}"
+      loop:
+        - PyMySQL
+        - cryptography
+    - name: disable nodejs version
+      ansible.builtin.command: dnf module disable nodejs -y
+    - name: enable nodejs version
+      ansible.builtin.command: dnf module enable nodejs:20 -y
+    - name: install nodejs
+      ansible.builtin.command: dnf install nodejs -y
+    - name: create app directory
+      ansible.builtin.file:
+        path: /app
+        state: directory
+    - name: download backend code
+      ansible.builtin.get_url:
+        url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+        dest: /tmp/backend.zip
+    - name: unzip the code
+      ansible.builtin.unarchive:
+        src: /tmp/backend.zip
+        dest: /app
+        remote_src: yes
+    - name: install dependecis using npm
+      community.general.npm:
+        path: /app
+    - name: create system user
+      ansible.builtin.user:
+        name: expense
+    - name: copy backend.service code
+      ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+    - name: import mysql data
+      community.mysql.mysqldb:
+        state: import
+        name: all
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        login_host: mysql.emurali.shop
+        target: /app/schema/backend.sql
+    - name: restart backend
+      ansible.builtin.systemd_service:
+        name: backend
+        state: restarted
+        enabled: true
+        daemon_reload: true
