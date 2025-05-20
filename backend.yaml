@@ -3,7 +3,8 @@
   become: yes
   roles:
     - backend
-- name: include common role
-  include_role:
-    name: common
-    tasks_from: main
+  tasks:
+    - name: include common role
+      include_role:
+        name: common
+        tasks_from: main
