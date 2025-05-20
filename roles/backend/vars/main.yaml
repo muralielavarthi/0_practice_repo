@@ -1,4 +1,5 @@
 mysql_login_user: root
 mysql_login_password: ExpenseApp@1
 mysql_login_host: mysql.emurali.shop
-backend_app_location: /app
+app_location: /app
+component_name: backend
