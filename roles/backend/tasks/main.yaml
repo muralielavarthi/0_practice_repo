@@ -8,3 +8,16 @@
   loop:
     - nodejs
     - mysql
+- name: include common role
+  include_role:
+    name: common
+- name: install dependencies
+  community.general.npm:
+    path: /app
+- name: create ansible user
+  ansible.builtin.user:
+    name: ansible
+- name: copy backend service file
+  ansible.builtin.template:
+    src: backend.service
+    dest: /etc/systemd/system/backend.service
