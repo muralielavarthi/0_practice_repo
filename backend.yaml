@@ -10,7 +10,10 @@
       loop:
         - PyMySQL
         - cryptography
-        - mysql
+    - name: install mysql cli
+      ansible.builtin.package:
+        name: mysql
+        state: present
     - name: disable nodejs version
       ansible.builtin.command: dnf module disable nodejs -y
     - name: enable nodejs version
