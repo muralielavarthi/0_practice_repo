@@ -23,7 +23,7 @@
       community.mysql.mysql_info:
         login_user: root
         login_password: "{{ mysql_root_password }}"
-        logon_host: mysql.emurali.shop
+        login_host: mysql.emurali.shop
       register: mysql_info
       ignore_errors: true
     - name: set root password
