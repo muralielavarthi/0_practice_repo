@@ -21,3 +21,17 @@
   ansible.builtin.template:
     src: backend.service
     dest: /etc/systemd/system/backend.service
+- name: import sql schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    login_user: "{{ mysql_login_user }}"
+    login_password: "{{ mysql_login_password }}"
+    login_host: "{{ mysql_login_host }}"
+    target: /app/schema/backend.sql
+- name: daemon reload and restart
+  ansible.builtin.systemd_service:
+    name: backend
+    state: restarted
+    enabled: true
+    daemon_reload: true
