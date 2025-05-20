@@ -7,7 +7,7 @@
     path: "{{ app_location }}"
     state: directory
 - name: download the code
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component_name }}-v2.zip
+  ansible.builtin.unarchive:
+    src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component_name }}-v2.zip
     dest: "{{ app_location }}"
     remote_src: yes
