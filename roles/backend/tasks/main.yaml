@@ -19,8 +19,9 @@
     name: ansible
 - name: copy backend service file
   ansible.builtin.template:
-    src: backend.service
+    src: backend.service.j2
     dest: /etc/systemd/system/backend.service
+    remote_src:
 - name: import sql schema
   community.mysql.mysql_db:
     state: import
