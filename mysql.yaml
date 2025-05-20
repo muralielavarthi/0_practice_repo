@@ -4,7 +4,7 @@
   vars:
     mysql_root_password: ExpenseApp@1
   tasks:
-    - name: install dependecy packages
+    - name: install python packages
       ansible.builtin.pip:
         name: "{{ item }}"
       loop:
@@ -19,7 +19,7 @@
         name: mysqld
         state: started
         enabled: yes
-    - name: check root password is set
+    - name: check is root password set
       community.mysql.mysql_info:
         login_user: root
         login_password: "{{ mysql_root_password }}"
