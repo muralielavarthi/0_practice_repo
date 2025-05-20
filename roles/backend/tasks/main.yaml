@@ -8,12 +8,6 @@
   loop:
     - nodejs
     - mysql
-- name: install python packages
-  ansible.builtin.pip:
-    name: "{{ item }}"
-  loop:
-    - PyMySQL
-    - cryptography
 - name: include common role
   include_role:
     name: common
