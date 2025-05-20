@@ -35,10 +35,10 @@
     - name: create system user
       ansible.builtin.user:
         name: expense
-    - name: copy backend.service code
+    - name: copy backend service code
       ansible.builtin.copy:
-      src: backend.service
-      dest: /etc/systemd/system/backend.service
+        src: backend.service
+        dest: /etc/systemd/system/backend.service
     - name: import mysql data
       community.mysql.mysqldb:
         state: import
