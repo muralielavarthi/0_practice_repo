@@ -56,7 +56,3 @@
   include_role:
     name: common
     tasks_from: main
-- name: include vault file commonly
-  include_role:
-    name: common
-    tasks_from: vault
