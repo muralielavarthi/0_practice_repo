@@ -1,7 +1,10 @@
 - name: install dependencies
   ansible.builtin.pip:
-    name: PyMySQL
+    name: "{{ item }}"
     state: present
+  loop:
+    - cryptography
+    - PyMySQL
 - name: create mysql-server
   ansible.builtin.package:
     name: mysql-server
