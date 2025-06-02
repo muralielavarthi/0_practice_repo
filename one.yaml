@@ -6,3 +6,7 @@
   tasks:
     - name: shell module
       ansible.builtin.shell: touch /tmp/f1.txt
+      register: command_result
+    - name: print comand ouput
+      ansible.builtin.debug:
+        msg: "{{ command_result }}"
