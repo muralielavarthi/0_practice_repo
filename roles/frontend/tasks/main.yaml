@@ -18,6 +18,6 @@
     remote_src: yes
 - name: configure proxy server and copy the file
   ansible.builtin.template:
-    src: expense.conf
+    src: expense.conf.j2
     dest: /etc/nginx/default.d/expense.conf
   notify: restart-nginx
