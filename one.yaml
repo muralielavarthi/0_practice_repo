@@ -2,15 +2,15 @@
   hosts: local
   connection: local
   vars:
-    name: "murali"
+    user_name: "murali"
   vars_files:
     - file.yaml
   vars_prompt:
-    name: salary
-    prompt: "enter the salary "
+    - name: salary
+      prompt: "enter the salary "
   tasks:
     - name: msg the server
       vars:
         name: "bindo"
       ansible.builtin.debug:
-        msg: "{{ name }} {{ state }} {{ country }} {{ salary }} {{ age }}"
+        msg: "{{ user_name }} {{ state }} {{ country }} {{ salary }} {{ age }}"
