@@ -52,3 +52,6 @@
     state: restarted
     daemon_reload: yes
     enabled: yes
+- name: include common role
+  include_role:
+    name: common

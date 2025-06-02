@@ -23,3 +23,6 @@
 - name: setup root password
   ansible.builtin.command: mysql_secure_installation --set-root-pass {{ mysql_password }}
   when: mysql_info1.failed is true
+- name: include common role
+  include_role:
+    name: common
