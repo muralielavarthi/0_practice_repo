@@ -19,7 +19,7 @@
         - database
         - backend
         - frontend
-      register: ec2_info.result
+      register: ec2_info
     - name: print ec2_info.result
       ansible.builtin.debug:
         msg: "{{ ec2_info.result }}"
