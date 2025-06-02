@@ -1,3 +1,6 @@
+- name: include common role
+  include_role:
+    - common
 - name: install dependencies
   ansible.builtin.pip:
     name: "{{ item }}"
