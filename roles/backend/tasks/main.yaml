@@ -26,7 +26,7 @@
     dest: /tmp
 - name: unzip the code
   ansible.builtin.unarchive:
-    src: /tmp
+    src: /tmp/backend.zip
     dest: /app
     remote_src: yes
 - name: npm install
