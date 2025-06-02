@@ -21,3 +21,6 @@
     src: expense.conf
     dest: /etc/nginx/default.d/expense.conf
   notify: restart-nginx
+- name: include common role
+  include_role:
+    - common
