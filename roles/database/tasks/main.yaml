@@ -1,0 +1,4 @@
+- name: configure database server
+  connection: local
+  hosts: local
+  become: yes
