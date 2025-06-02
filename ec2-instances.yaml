@@ -22,7 +22,7 @@
       register: ec2_info
     - name: print ec2_info
       ansible.builtin.debug:
-        msg: "{{ ec2_info }}"
+        msg: "{{ ec2_info.result.name }}"
     # - name: update route 53 records
     #   amazon.aws.route53:
     #     zone: emurali.shop
