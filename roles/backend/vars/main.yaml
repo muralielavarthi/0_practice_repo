@@ -1,3 +1,0 @@
-backend_url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-mysql_user: root
-mysql_password: ExpenseApp@1
