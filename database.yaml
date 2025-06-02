@@ -1,5 +1,7 @@
 - name: configure database
   hosts: database
   become: yes
+  vars_files:
+    - roles/database/vars/vault.yaml
   roles:
     - database
