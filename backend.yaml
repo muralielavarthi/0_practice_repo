@@ -3,6 +3,6 @@
   become: yes
   vars_files:
     - roles/common/vars/main.yaml
-    - roles/backend/vars/vault.yaml
+    - roles/common/vars/vault.yaml
   roles:
     - backend
