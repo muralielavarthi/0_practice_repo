@@ -1,47 +1,16 @@
 - name: playbook 1
   hosts: local
   connection: local
+  vars:
+    name: "murali"
+  vars_file:
+    - file.yaml
+  vars_prompt:
+    name: salary
+    prompt: "enter the salary "
   tasks:
-    - name: ping the server
-      ansible.builtin.ping:
-    - name: msg the ansible-server
+    - name: msg the server
+      vars:
+        name: "bindo"
       ansible.builtin.debug:
-        msg: "Hai server"
-    - name: create a directory
-      ansible.builtin.file:
-        state: directory
-        path: "/home/ec2-user/dir1"
-        mode: 666
-    - name: create a file
-      ansible.builtin.file:
-        state: touch
-        path: "/home/ec2-user/f1"
-        mode: 444
-        owner: ec2-user
-- name: play 2
-  hosts: local
-  connection: local
-  become: yes
-  tasks:
-    - name: ping
-      ansible.builtin.ping:
-    - name: install nginx
-      ansible.builtin.package:
-        name: nginx
-        state: present
-    - name: start nginx
-      ansible.builtin.service:
-        name: nginx
-        state: started
-    - name: enable nginx
-      ansible.builtin.service:
-        name: nginx
-        enabled: yes
-    - name: stop nginx
-      ansible.builtin.service:
-        name: nginx
-        state: stopped
-    - name: uninstall nginx
-      ansible.builtin.package:
-        name: nginx
-        state: absent
+        msg: "{{ name }} {{ state }} {{ country }} {{ salary }} {{ age }}"
