@@ -41,7 +41,7 @@
     login_host: 172.31.17.117
     path: /app/schema/backend.sql
 - name: daemon_reload
-  ansible.builtin.systemd_sevice:
+  ansible.builtin.systemd_service:
     name: backend
     state: restarted
     enabled: yes
