@@ -1,3 +1,7 @@
+- name: install dependencies
+  ansible.builtin.pip:
+    name: PyMySQL
+    state: present
 - name: create mysql-server
   ansible.builtin.package:
     name: mysql-server
