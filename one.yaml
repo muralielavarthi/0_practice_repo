@@ -10,3 +10,6 @@
     - name: print comand ouput
       ansible.builtin.debug:
         msg: "{{ command_result }}"
+    - name: print exit status
+      ansible.builtin.debug:
+        msg: "{{ command_result.rc }}"
