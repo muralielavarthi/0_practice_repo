@@ -1,6 +1,3 @@
-- name: include common role
-  include_role:
-    - common
 - name: install nginx
   ansible.builtin.package:
     name: nginx
@@ -18,12 +15,9 @@
   ansible.builtin.unarchive:
     src: /tmp/frontend.zip
     dest: /usr/share/nginx/html/
-    remote_src: yes
+  remote_src: yes
 - name: configure proxy server and copy the file
   ansible.builtin.template:
-    src: expense.conf.j2
+    src: expense.conf
     dest: /etc/nginx/default.d/expense.conf
   notify: restart-nginx
-- name: include common role
-  include_role:
-    - common
