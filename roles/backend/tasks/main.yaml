@@ -1,6 +1,3 @@
-- name: include common role
-  include_role:
-    - common
 - name: disable nodejs
   ansible.builtin.command: dnf module disable nodejs -y
 - name: enable nodejs
@@ -41,6 +38,9 @@
   ansible.builtin.template:
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
+- name: include common role
+  include_role:
+    - common
 - name: load mysql schema
   community.mysql.mysql_db:
     login_user: "{{ mysql_user }}"
