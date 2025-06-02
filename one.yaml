@@ -3,7 +3,7 @@
   connection: local
   vars:
     name: "murali"
-  vars_file:
+  vars_files:
     - file.yaml
   vars_prompt:
     name: salary
