@@ -1,8 +1,8 @@
-# - name: install dependencies
-#   ansible.builtin.pip:
-#     name: "{{ item }}"
-#   loop:
-#     - crypotograp
+- name: install dependencies
+  ansible.builtin.pip:
+    name: "{{ item }}"
+  loop:
+    - PyMySQL
 - name: install mysql-server
   ansible.builtin.package:
     name: mysql-server
