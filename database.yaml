@@ -2,4 +2,4 @@
   hosts: database
   become: yes
   roles:
-    - backend
+    - database
