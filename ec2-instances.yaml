@@ -19,3 +19,13 @@
         - database
         - backend
         - frontend
+      register: ec2_info.result
+    - name: print ec2_info.result
+      ansible.builtin.debug:
+        msg: "{{ ec2_info.result }}"
+    # - name: update route 53 records
+    #   amazon.aws.route53:
+    #     zone: emurali.shop
+    #     type: A
+    #     ttl: 1
+    #     value: ec2_info.result.
