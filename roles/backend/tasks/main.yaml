@@ -41,6 +41,7 @@
     dest: /etc/systemd/system/backend.service
 - name: load mysql file
   community.mysql.mysql_db:
+    name: all
     login_user: root
     login_password: "{{mysql_root_password}}"
     login_host: 172.31.17.117
