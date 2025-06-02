@@ -3,6 +3,7 @@
     name: "{{ item }}"
   loop:
     - PyMySQL
+    - cryptography
 - name: install mysql-server
   ansible.builtin.package:
     name: mysql-server
