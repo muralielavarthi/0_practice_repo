@@ -3,7 +3,7 @@
   connection: local
   tasks:
     - name: create 3 instances
-      amazon.aws.ec2_instances:
+      amazon.aws.ec2_instance:
         name: "{{ item }}"
         security_group: sg-09002db929ad2ff12
         image_id: ami-09c813fb71547fc4f
