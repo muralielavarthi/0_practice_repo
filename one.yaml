@@ -38,7 +38,7 @@
         name: nginx
         enabled: yes
     - name: stop nginx
-      ansible.builtin.package:
+      ansible.builtin.service:
         name: nginx
         state: stopped
     - name: uninstall nginx
