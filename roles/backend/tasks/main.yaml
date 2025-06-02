@@ -37,8 +37,8 @@
     name: expense
 - name: copy backend service file
   ansible.builtin.template:
-    src: /roles/backend/template/backend.service.js
-    dest: /etc/system/systemd/backend.service
+    src: backend.service.j2
+    dest: /etc/systemd/system/backend.service
 - name: load mysql file
   community.mysql.mysql_db:
     login_user: root
