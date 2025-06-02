@@ -21,6 +21,7 @@
 - name: play 2
   hosts: local
   connection: local
+  become: yes
   tasks:
     - name: ping
       ansible.builtin.ping:
