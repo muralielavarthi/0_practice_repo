@@ -2,14 +2,19 @@
   ansible.builtin.command: dnf module disable nodejs -y
 - name: enable nodejs v20
   ansible.builtin.command: dnf module enable nodejs:20 -y
+- name: install dependencies
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - cryptography
+    - PyMySQL
 - name: install nodejs
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop:
     - nodejs
-    - cryptography
-    - PyMySQL
     - mysql
 - name: create app directory
   ansible.builtin.file:
